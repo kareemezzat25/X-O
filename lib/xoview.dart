@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:xoapp/gameboard.dart';
 
 class XOScreen extends StatelessWidget {
+  static const String routeName = "X-O";
   const XOScreen({super.key});
 
   @override
@@ -41,26 +43,36 @@ class XOScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(32),
-                          color: Colors.white),
-                      child: Image.asset(
-                        "assets/images/X.png",
-                        height: 86,
-                        width: 86,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, GameBoard.routeName);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(32),
+                            color: Colors.white),
+                        child: Image.asset(
+                          "assets/images/X.png",
+                          height: 86,
+                          width: 86,
+                        ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(32),
-                          color: Colors.white),
-                      child: Image.asset(
-                        "assets/images/O.png",
-                        width: 86,
-                        height: 86,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, GameBoard.routeName);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(32),
+                            color: Colors.white),
+                        child: Image.asset(
+                          "assets/images/O.png",
+                          width: 86,
+                          height: 86,
+                        ),
                       ),
                     )
                   ],

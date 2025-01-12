@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xoapp/gameboard.dart';
 import 'package:xoapp/xoview.dart';
 
 void main() {
@@ -10,6 +11,13 @@ class XOGame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: XOScreen());
+    return MaterialApp(
+        initialRoute: XOScreen.routeName,
+        routes: {
+          XOScreen.routeName: (context) => XOScreen(),
+          GameBoard.routeName: (context) => GameBoard()
+        },
+        debugShowCheckedModeBanner: false,
+        home: XOScreen());
   }
 }
