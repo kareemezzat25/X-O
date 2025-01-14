@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:xoapp/playeritem.dart';
 
 class GameBoard extends StatefulWidget {
   static const String routeName = "gameBoard";
@@ -74,7 +75,26 @@ class _GameBoardState extends State<GameBoard> {
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 36,
-                            fontWeight: FontWeight.w700))
+                            fontWeight: FontWeight.w700)),
+                    SizedBox(height: 24),
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [PlayerItem(), PlayerItem(), PlayerItem()],
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [PlayerItem(), PlayerItem(), PlayerItem()],
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [PlayerItem(), PlayerItem(), PlayerItem()],
+                      ),
+                    )
                   ],
                 ),
               ),
