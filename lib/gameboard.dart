@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:xoapp/playeritem.dart';
+import 'package:xoapp/boarditem.dart';
 
 class GameBoard extends StatefulWidget {
   static const String routeName = "gameBoard";
+
   const GameBoard({super.key});
 
   @override
@@ -14,6 +15,7 @@ class GameBoard extends StatefulWidget {
 class _GameBoardState extends State<GameBoard> {
   Timer? _timer;
   int _elapsedSeconds = 0;
+  List<String> Board = ["", "", "", "", "", "", "", "", ""];
 
   void startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -80,19 +82,67 @@ class _GameBoardState extends State<GameBoard> {
                     Expanded(
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [PlayerItem(), PlayerItem(), PlayerItem()],
+                        children: [
+                          BoardItem(
+                            player: Board[0],
+                            index: 0,
+                            onButtonClick: onButtonClicked,
+                          ),
+                          BoardItem(
+                            player: Board[1],
+                            index: 1,
+                            onButtonClick: onButtonClicked,
+                          ),
+                          BoardItem(
+                            player: Board[2],
+                            index: 2,
+                            onButtonClick: onButtonClicked,
+                          )
+                        ],
                       ),
                     ),
                     Expanded(
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [PlayerItem(), PlayerItem(), PlayerItem()],
+                        children: [
+                          BoardItem(
+                            player: Board[3],
+                            index: 3,
+                            onButtonClick: onButtonClicked,
+                          ),
+                          BoardItem(
+                            player: Board[4],
+                            index: 4,
+                            onButtonClick: onButtonClicked,
+                          ),
+                          BoardItem(
+                            player: Board[5],
+                            index: 5,
+                            onButtonClick: onButtonClicked,
+                          )
+                        ],
                       ),
                     ),
                     Expanded(
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [PlayerItem(), PlayerItem(), PlayerItem()],
+                        children: [
+                          BoardItem(
+                            player: Board[6],
+                            index: 6,
+                            onButtonClick: onButtonClicked,
+                          ),
+                          BoardItem(
+                            player: Board[7],
+                            index: 7,
+                            onButtonClick: onButtonClicked,
+                          ),
+                          BoardItem(
+                            player: Board[8],
+                            index: 8,
+                            onButtonClick: onButtonClicked,
+                          )
+                        ],
                       ),
                     )
                   ],
@@ -101,5 +151,19 @@ class _GameBoardState extends State<GameBoard> {
             )),
       ],
     );
+  }
+
+  int counter = 0;
+  onButtonClicked(index) {
+    if (Board[index].isNotEmpty) return;
+    if (counter == 0) {
+      Board[index] = "X";
+      counter = 1;
+      setState(() {});
+    } else {
+      Board[index] = "O";
+      counter = 0;
+      setState(() {});
+    }
   }
 }
