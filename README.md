@@ -3,7 +3,7 @@
 A new Flutter project.
 
 ## Getting Started
-
+link of design in Figma:https://www.figma.com/design/9TmI7FHwbA58bE1IY6uQqj/X-O?node-id=0-1&p=f&t=vD1FypLalqVWV7hc-0
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
