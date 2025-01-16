@@ -158,6 +158,7 @@ class _GameBoardState extends State<GameBoard> {
   }
 
   int counter = 0;
+  int counterboard = 0;
   onButtonClicked(index) {
     if (Board[index].isNotEmpty) return;
     bool winner;
@@ -165,23 +166,33 @@ class _GameBoardState extends State<GameBoard> {
       title = "Player 1’s Turn";
       Board[index] = playerNumber == 1 ? "X" : "O";
       // check if is win
-      winner = checkWinner("X");
+      winner = checkWinner(Board[index]);
       if (winner) {
         title = "Player 1’s Win";
         resetGame();
+        return;
       }
       counter = 1;
       setState(() {});
     } else {
       title = "Player 2’s Turn";
       Board[index] = playerNumber == 0 ? "X" : "O";
-      winner = checkWinner("O");
+      winner = checkWinner(Board[index]);
       if (winner) {
         title = "Player 2’s Win";
         resetGame();
+        return;
       }
       counter = 0;
+
       setState(() {});
+    }
+
+    counterboard++;
+    if (counterboard == 9) {
+      title = "No one win!";
+      setState(() {});
+      resetGame();
     }
   }
 
@@ -213,8 +224,9 @@ class _GameBoardState extends State<GameBoard> {
   }
 
   void resetBoard() {
+    // start the game again
     Board = ["", "", "", "", "", "", "", "", ""];
-    counter = 0;
+    counterboard = 0;
   }
 
   void resetGame() {
