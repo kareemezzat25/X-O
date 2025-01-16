@@ -17,6 +17,7 @@ class _GameBoardState extends State<GameBoard> {
   int _elapsedSeconds = 0;
   int? playerNumber;
   List<String> Board = ["", "", "", "", "", "", "", "", ""];
+  String title = "Player 1’s Turn";
 
   void startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -76,7 +77,7 @@ class _GameBoardState extends State<GameBoard> {
                     SizedBox(
                       height: 32,
                     ),
-                    Text("Player 1’s Turn",
+                    Text(title,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 36,
@@ -159,14 +160,71 @@ class _GameBoardState extends State<GameBoard> {
   int counter = 0;
   onButtonClicked(index) {
     if (Board[index].isNotEmpty) return;
+    bool winner;
     if (counter == 0) {
+      title = "Player 1’s Turn";
       Board[index] = playerNumber == 1 ? "X" : "O";
+      // check if is win
+      winner = checkWinner("X");
+      if (winner) {
+        title = "Player 1’s Win";
+        resetGame();
+      }
       counter = 1;
       setState(() {});
     } else {
+      title = "Player 2’s Turn";
       Board[index] = playerNumber == 0 ? "X" : "O";
+      winner = checkWinner("O");
+      if (winner) {
+        title = "Player 2’s Win";
+        resetGame();
+      }
       counter = 0;
       setState(() {});
     }
+  }
+
+  bool checkWinner(symbol) {
+    //check if winner in row
+    for (int i = 0; i < 9; i += 3) {
+      if (Board[i] == symbol &&
+          Board[i + 1] == symbol &&
+          Board[i + 2] == symbol) {
+        return true;
+      }
+    }
+    //check if winner in column
+    for (int i = 0; i < 3; i++) {
+      if (Board[i] == symbol &&
+          Board[i + 3] == symbol &&
+          Board[i + 6] == symbol) {
+        return true;
+      }
+    }
+    // check if winner in diagonal
+
+    if (Board[0] == symbol && Board[4] == symbol && Board[8] == symbol)
+      return true;
+    if (Board[2] == symbol && Board[4] == symbol && Board[6] == symbol)
+      return true;
+
+    return false;
+  }
+
+  void resetBoard() {
+    Board = ["", "", "", "", "", "", "", "", ""];
+    counter = 0;
+  }
+
+  void resetGame() {
+    resetBoard();
+    setState(() {
+      _elapsedSeconds = 0;
+    });
+    //stop the time
+    _timer?.cancel();
+    // start the time again
+    startTimer();
   }
 }
