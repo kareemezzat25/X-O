@@ -3,7 +3,7 @@ import 'package:xoapp/gameboard.dart';
 import 'package:xoapp/xoview.dart';
 
 void main() {
-  runApp(XOGame());
+  runApp(const XOGame());
 }
 
 class XOGame extends StatelessWidget {
@@ -14,10 +14,10 @@ class XOGame extends StatelessWidget {
     return MaterialApp(
         initialRoute: XOScreen.routeName,
         routes: {
-          XOScreen.routeName: (context) => XOScreen(),
-          GameBoard.routeName: (context) => GameBoard()
+          XOScreen.routeName: (context) => const XOScreen(),
+          GameBoard.routeName: (context) => const GameBoard()
         },
         debugShowCheckedModeBanner: false,
-        home: XOScreen());
+        home: const XOScreen());
   }
 }

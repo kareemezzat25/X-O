@@ -14,7 +14,7 @@ class BoardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.all(8),
+        margin: const EdgeInsets.all(8),
         child: ElevatedButton(
           onPressed: () {
             onButtonClick(index);
@@ -23,7 +23,7 @@ class BoardItem extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12))),
           child: player.isEmpty
-              ? SizedBox()
+              ? const SizedBox()
               : Image.asset(
                   "assets/images/$player.png",
                 ),

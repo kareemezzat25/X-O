@@ -18,10 +18,15 @@ class _GameBoardState extends State<GameBoard> {
   int? playerNumber;
   List<String> Board = ["", "", "", "", "", "", "", "", ""];
   String title = "Player 1’s Turn";
+  String formatTime(int elapsedSeconds) {
+    final minutes = elapsedSeconds ~/ 60; // Calculate minutes
+    final seconds = elapsedSeconds % 60; // Calculate remaining seconds
+    return "${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}"; // Format as mm:ss
+  }
 
   void startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (_elapsedSeconds >= 150) {
+      if (_elapsedSeconds >= 120) {
         timer.cancel();
       } else {
         setState(() {
@@ -66,23 +71,23 @@ class _GameBoardState extends State<GameBoard> {
                   children: [
                     Container(
                         alignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(vertical: 18),
+                        padding: const EdgeInsets.symmetric(vertical: 18),
                         width: double.infinity,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(44),
                             color: Colors.white),
-                        child: Text("$_elapsedSeconds",
-                            style: TextStyle(
+                        child: Text(formatTime(_elapsedSeconds),
+                            style: const TextStyle(
                                 fontSize: 32, fontWeight: FontWeight.w600))),
-                    SizedBox(
+                    const SizedBox(
                       height: 32,
                     ),
                     Text(title,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 36,
                             fontWeight: FontWeight.w700)),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     Expanded(
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.stretch,

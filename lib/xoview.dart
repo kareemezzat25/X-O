@@ -21,24 +21,24 @@ class XOScreen extends StatelessWidget {
                     children: [
                       Image.asset("assets/images/xo.png",
                           width: double.infinity, fit: BoxFit.cover),
-                      Text("Tix-Tac-Toe",
+                      const Text("Tix-Tac-Toe",
                           style: TextStyle(
                               fontSize: 40,
                               fontWeight: FontWeight.w900,
                               color: Colors.white))
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 60,
                   ),
-                  Text(
+                  const Text(
                     "Pick who goes first?",
                     style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w500,
                         color: Colors.white),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Row(
@@ -50,7 +50,7 @@ class XOScreen extends StatelessWidget {
                               arguments: 1, context, GameBoard.routeName);
                         },
                         child: Container(
-                          padding: EdgeInsets.all(24),
+                          padding: const EdgeInsets.all(24),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(32),
                               color: Colors.white),
@@ -67,7 +67,7 @@ class XOScreen extends StatelessWidget {
                               arguments: 0, context, GameBoard.routeName);
                         },
                         child: Container(
-                          padding: EdgeInsets.all(24),
+                          padding: const EdgeInsets.all(24),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(32),
                               color: Colors.white),
