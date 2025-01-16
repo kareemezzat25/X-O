@@ -46,7 +46,8 @@ class XOScreen extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, GameBoard.routeName);
+                          Navigator.pushNamed(
+                              arguments: 1, context, GameBoard.routeName);
                         },
                         child: Container(
                           padding: EdgeInsets.all(24),
@@ -62,7 +63,8 @@ class XOScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, GameBoard.routeName);
+                          Navigator.pushNamed(
+                              arguments: 0, context, GameBoard.routeName);
                         },
                         child: Container(
                           padding: EdgeInsets.all(24),

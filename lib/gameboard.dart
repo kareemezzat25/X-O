@@ -15,6 +15,7 @@ class GameBoard extends StatefulWidget {
 class _GameBoardState extends State<GameBoard> {
   Timer? _timer;
   int _elapsedSeconds = 0;
+  int? playerNumber;
   List<String> Board = ["", "", "", "", "", "", "", "", ""];
 
   void startTimer() {
@@ -45,6 +46,8 @@ class _GameBoardState extends State<GameBoard> {
 
   @override
   Widget build(BuildContext context) {
+    playerNumber = ModalRoute.of(context)?.settings.arguments as int;
+
     return Stack(
       children: [
         Image.asset(
@@ -157,11 +160,11 @@ class _GameBoardState extends State<GameBoard> {
   onButtonClicked(index) {
     if (Board[index].isNotEmpty) return;
     if (counter == 0) {
-      Board[index] = "X";
+      Board[index] = playerNumber == 1 ? "X" : "O";
       counter = 1;
       setState(() {});
     } else {
-      Board[index] = "O";
+      Board[index] = playerNumber == 0 ? "X" : "O";
       counter = 0;
       setState(() {});
     }
